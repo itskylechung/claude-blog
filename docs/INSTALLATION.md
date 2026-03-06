@@ -17,6 +17,18 @@ other commands work without it.
 
 ---
 
+## Plugin Install (Recommended)
+
+The simplest way to install claude-blog is via the Claude Code plugin system:
+
+```bash
+/plugin install claude-blog@AgriciDaniel
+```
+
+This automatically installs all skills, agents, references, and templates.
+
+---
+
 ## Quick Install (One Command)
 
 ### Linux / macOS
@@ -128,13 +140,13 @@ mkdir -p ~/.claude/skills/blog-{write,rewrite,analyze,brief,calendar,strategy,ou
 mkdir -p ~/.claude/agents
 
 # Main skill
-cp blog/SKILL.md ~/.claude/skills/blog/SKILL.md
+cp skills/blog/SKILL.md ~/.claude/skills/blog/SKILL.md
 
 # References
-cp blog/references/*.md ~/.claude/skills/blog/references/
+cp skills/blog/references/*.md ~/.claude/skills/blog/references/
 
 # Templates
-cp blog/templates/*.md ~/.claude/skills/blog/templates/
+cp skills/blog/templates/*.md ~/.claude/skills/blog/templates/
 
 # Sub-skills
 for d in skills/blog-*/; do

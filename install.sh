@@ -23,7 +23,7 @@ main() {
     echo ""
 
     # Determine source directory (local clone or piped from curl)
-    if [ -f "${BASH_SOURCE[0]:-}" ] && [ -d "$(dirname "${BASH_SOURCE[0]}")/blog" ]; then
+    if [ -f "${BASH_SOURCE[0]:-}" ] && [ -d "$(dirname "${BASH_SOURCE[0]}")/skills/blog" ]; then
         SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     else
         echo "→ Cloning claude-blog..."
@@ -52,24 +52,25 @@ main() {
 
     # Copy main skill
     echo "→ Installing main skill: blog..."
-    cp "${SCRIPT_DIR}/blog/SKILL.md" "${SKILL_DIR}/blog/SKILL.md"
+    cp "${SCRIPT_DIR}/skills/blog/SKILL.md" "${SKILL_DIR}/blog/SKILL.md"
 
     # Copy references
     echo "→ Installing reference files..."
-    if ls "${SCRIPT_DIR}/blog/references/"*.md &>/dev/null; then
-        cp "${SCRIPT_DIR}/blog/references/"*.md "${SKILL_DIR}/blog/references/"
+    if ls "${SCRIPT_DIR}/skills/blog/references/"*.md &>/dev/null; then
+        cp "${SCRIPT_DIR}/skills/blog/references/"*.md "${SKILL_DIR}/blog/references/"
     fi
 
     # Copy templates
-    if ls "${SCRIPT_DIR}/blog/templates/"*.md &>/dev/null; then
+    if ls "${SCRIPT_DIR}/skills/blog/templates/"*.md &>/dev/null; then
         echo "→ Installing content templates..."
-        cp "${SCRIPT_DIR}/blog/templates/"*.md "${SKILL_DIR}/blog/templates/"
+        cp "${SCRIPT_DIR}/skills/blog/templates/"*.md "${SKILL_DIR}/blog/templates/"
     fi
 
     # Copy sub-skills
     echo "→ Installing sub-skills..."
     for skill_dir in "${SCRIPT_DIR}/skills/"*/; do
         skill_name="$(basename "${skill_dir}")"
+        [ "$skill_name" = "blog" ] && continue
         if [ -f "${skill_dir}SKILL.md" ]; then
             cp "${skill_dir}SKILL.md" "${SKILL_DIR}/${skill_name}/SKILL.md"
             echo "  + ${skill_name}"
@@ -94,9 +95,9 @@ main() {
     # Install Python dependencies
     if [ -f "${SCRIPT_DIR}/requirements.txt" ] && command -v pip3 &>/dev/null; then
         echo "→ Installing Python dependencies..."
-        pip3 install --quiet --break-system-packages -r "${SCRIPT_DIR}/requirements.txt" 2>/dev/null || \
         pip3 install --quiet -r "${SCRIPT_DIR}/requirements.txt" 2>/dev/null || \
         echo "  Skipped: Install manually with 'pip3 install -r requirements.txt'"
+        echo "  Tip: Consider using a virtual environment: python3 -m venv .venv && source .venv/bin/activate"
     fi
 
     echo ""

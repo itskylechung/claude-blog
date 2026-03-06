@@ -181,11 +181,11 @@ for the content type.
 
 2. **Wrong install path**: Templates must be in
    `~/.claude/skills/blog/templates/`, not in the repository's
-   `blog/templates/` directory.
+   `skills/blog/templates/` directory.
 
 3. **Template file corrupted**: Re-copy from the repository:
    ```bash
-   cp blog/templates/*.md ~/.claude/skills/blog/templates/
+   cp skills/blog/templates/*.md ~/.claude/skills/blog/templates/
    ```
 
 ### Wrong template selected
@@ -246,7 +246,7 @@ before spawning the agent. If the issue persists:
    ```
 2. Re-install references:
    ```bash
-   cp blog/references/*.md ~/.claude/skills/blog/references/
+   cp skills/blog/references/*.md ~/.claude/skills/blog/references/
    ```
 
 ---
@@ -377,7 +377,7 @@ If your issue is not listed here:
 
 2. **Verify file integrity**: Compare installed files with the repository:
    ```bash
-   diff ~/.claude/skills/blog/SKILL.md blog/SKILL.md
+   diff ~/.claude/skills/blog/SKILL.md skills/blog/SKILL.md
    ```
 
 3. **Reset installation**: Remove and reinstall:
