@@ -35,15 +35,6 @@ function Main {
 
     # Create directories
     Write-Color White "Creating directories..."
-    $dirs = @(
-        (Join-Path $SkillDir "blog" "references"),
-        (Join-Path $SkillDir "blog" "templates"),
-        (Join-Path $SkillDir "blog" "scripts"),
-        "blog-write", "blog-rewrite", "blog-analyze", "blog-brief",
-        "blog-calendar", "blog-strategy", "blog-outline", "blog-seo-check",
-        "blog-schema", "blog-repurpose", "blog-geo", "blog-audit"
-    )
-
     New-Item -ItemType Directory -Force -Path (Join-Path $SkillDir "blog" "references") | Out-Null
     New-Item -ItemType Directory -Force -Path (Join-Path $SkillDir "blog" "templates") | Out-Null
     New-Item -ItemType Directory -Force -Path (Join-Path $SkillDir "blog" "scripts") | Out-Null

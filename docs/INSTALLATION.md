@@ -8,24 +8,12 @@ ecosystem for blog content creation, optimization, and management.
 | Requirement | Version | Purpose |
 |-------------|---------|---------|
 | [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) | Latest | Runtime for all `/blog` commands |
-| Python | 3.12+ | Quality analysis script (`analyze_blog.py`) |
+| Python | 3.11+ | Quality analysis script (`analyze_blog.py`) |
 | pip | Latest | Python dependency management |
 
 Claude Code must be installed and configured before installing `claude-blog`.
 Python is only required for the `analyze_blog.py` quality scoring script; all
 other commands work without it.
-
----
-
-## Plugin Install (Recommended)
-
-The simplest way to install claude-blog is via the Claude Code plugin system:
-
-```bash
-/plugin install claude-blog@AgriciDaniel
-```
-
-This automatically installs all skills, agents, references, and templates.
 
 ---
 
@@ -136,7 +124,7 @@ If you prefer not to run the installer, copy files to these paths manually.
 ```bash
 # Create directories
 mkdir -p ~/.claude/skills/blog/{references,templates,scripts}
-mkdir -p ~/.claude/skills/blog-{write,rewrite,analyze,brief,calendar,strategy,outline,seo-check,schema,repurpose,geo,audit}
+mkdir -p ~/.claude/skills/blog-{write,rewrite,analyze,brief,calendar,strategy,outline,seo-check,schema,repurpose,geo,audit,chart}
 mkdir -p ~/.claude/agents
 
 # Main skill
@@ -285,7 +273,7 @@ Restart Claude Code after uninstalling to complete removal.
 | Symptom | Cause | Fix |
 |---------|-------|-----|
 | `/blog` command not found | Claude Code not restarted | Close and reopen Claude Code |
-| `python3: command not found` | Python not installed or not in PATH | Install Python 3.12+ via your package manager |
+| `python3: command not found` | Python not installed or not in PATH | Install Python 3.11+ via your package manager |
 | `pip install` fails | Missing pip or wrong Python version | Run `python3 -m ensurepip --upgrade` |
 | Permission denied on `install.sh` | Script not executable | Run `chmod +x install.sh` |
 | Files not in `~/.claude/` | Wrong install location | Verify `$HOME` points to your home directory |

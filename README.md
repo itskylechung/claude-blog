@@ -4,7 +4,7 @@
 
 ![Claude Code Skill](https://img.shields.io/badge/Claude_Code-Skill-blueviolet)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
-![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue)
+![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Sub-Skills](https://img.shields.io/badge/Sub--Skills-13-orange)
 
 **The most comprehensive blog creation skill for Claude Code.**
@@ -18,13 +18,7 @@ Strategy, briefs, calendars, writing, optimization, schema, repurposing, and ful
 
 ## Quick Start
 
-**Plugin install (recommended):**
-
-```bash
-/plugin install claude-blog@AgriciDaniel
-```
-
-**Or one-command install (Unix/macOS):**
+**One-command install (Unix/macOS):**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/AgriciDaniel/claude-blog/main/install.sh | bash
@@ -61,6 +55,8 @@ Restart Claude Code after installation to activate.
 | `/blog repurpose <file>` | Repurpose for social, email, YouTube |
 | `/blog geo <file>` | AI citation readiness audit |
 | `/blog audit [directory]` | Full-site blog health assessment |
+
+> **13 sub-skills total**: 12 user-facing commands above + `blog-chart` (internal SVG generation, invoked automatically by other commands).
 
 ## Features
 
@@ -144,7 +140,7 @@ claude-blog/
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
-- Python 3.12+ (for `analyze_blog.py` quality scoring script)
+- Python 3.11+ (for `analyze_blog.py` quality scoring script)
 - Optional: `pip install -r requirements.txt` for advanced analysis (readability scoring, schema detection)
 
 ## Uninstall
