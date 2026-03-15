@@ -4,7 +4,8 @@ description: >
   Write new blog articles from scratch optimized for Google rankings and AI
   citations. Generates full articles with template selection, answer-first
   formatting, TL;DR box, information gain markers, citation capsules, sourced
-  statistics, Pixabay/Unsplash images, built-in SVG chart generation, FAQ schema,
+  statistics, social intelligence from bycrawl MCP, SERP analysis via Playwright,
+  Pixabay/Unsplash images, built-in SVG chart generation, FAQ schema,
   internal linking zones, and proper heading hierarchy. Supports MDX, markdown,
   and HTML output.
   Use when user says "write blog", "new blog post", "create article",
@@ -19,6 +20,7 @@ allowed-tools:
   - WebFetch
   - WebSearch
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog Writer -- New Article Generation
@@ -32,6 +34,7 @@ follows the 6 pillars of dual optimization (Google rankings + AI citations).
 - `references/eeat-signals.md` — Experience, expertise, authority, trust markers
 - `references/internal-linking.md` — Linking strategy and anchor text rules
 - `references/visual-media.md` — Image sourcing and chart styling
+- `references/social-serp-research.md` — ByCrawl API patterns and Playwright SERP scraping
 
 ## Workflow
 
@@ -43,6 +46,27 @@ follows the 6 pillars of dual optimization (Google rankings + AI citations).
    - Desired word count (default: 2,000-2,500 words)
    - Platform/format (MDX, markdown, HTML — auto-detect if in a project)
 2. **If a brief exists** — Load it and skip to Phase 1.5
+
+### Phase 1.3: Social Demand Validation (Optional)
+
+> "Would you like me to validate this topic with live social signals from bycrawl? (yes/no)"
+
+If yes, run a cross-platform volume check (see `references/social-serp-research.md`
+§ Social Keyword Discovery):
+
+1. **Cross-platform search** — Query Reddit, X, TikTok, YouTube, Threads for the keyword
+2. **Signal assessment**:
+   - **Strong** (50+ results across 3+ platforms): Proceed with confidence
+   - **Moderate** (20-50 results): Proceed but note niche audience
+   - **Weak** (<20 results total): Warn user — consider pivoting or niching down
+3. **Extract early intelligence**:
+   - Long-tail keyword variations from social titles
+   - Question-format keywords (high intent)
+   - Emerging terms in "Latest" but not "Top" (newly trending)
+4. **Feed into Phase 1.5** — Social signals help select the right template
+   (e.g., high question volume → `faq-knowledge`, viral debate → `thought-leadership`)
+
+If no, skip to Phase 1.5.
 
 ### Phase 1.5: Template Selection
 
@@ -98,6 +122,52 @@ Spawn a `blog-researcher` agent (or do inline research with WebSearch):
 4. **Plan 2-4 data visualizations** from researched statistics
    - Select diverse chart types (see `references/visual-media.md`)
    - Map data points to chart formats
+
+#### ByCrawl Social Research (Optional)
+
+> "Would you like me to enrich research with live social data from bycrawl? (~20-30 API calls)"
+
+If yes, run these enrichments (details in `references/social-serp-research.md`):
+
+5. **Content gap analysis** — Search top-performing content across Reddit, X,
+   TikTok, YouTube to identify what's saturated vs. underserved
+6. **Comment mining** — Pull comments from top 3 YouTube and TikTok videos to
+   extract real audience questions → feed into FAQ and H2 topics
+7. **Real social statistics** — Use engagement data from viral posts as original
+   data points (e.g., "A Reddit thread with 4.2K upvotes revealed...")
+8. **Competitor social audit** — Check what competitors publish about this topic,
+   how audiences react, and what gaps exist in their messaging
+9. **Audience language** — Extract hooks, pain points, and desire language from
+   transcripts and comments for use in Phase 5 writing
+
+Record social findings in a `## Social Intelligence` section of research notes.
+
+### Phase 2.5: SERP Intelligence (Optional)
+
+> "Would you like me to scrape Google for SERP features and competitor analysis? Uses Playwright."
+
+If yes, run Playwright SERP scraping (scripts in `references/social-serp-research.md`):
+
+1. **Google Trends data** — Scrape interest-over-time for the keyword (past 12 months)
+   and related/rising queries. Feed trend data into chart generation (Phase 4).
+2. **SERP feature detection** — Identify: AI Overview, Featured Snippet, PAA box,
+   Knowledge Panel. Adapt content format to target available features.
+3. **People Also Ask extraction** — Pull PAA questions to:
+   - Use as H2 heading candidates (Phase 3)
+   - Add to FAQ section (Phase 5l)
+4. **Competitor title analysis** — Analyze top 10 organic titles for patterns:
+   number usage, question format, year inclusion, power words, character length.
+   Feed into title crafting (Phase 5a).
+5. **Related searches** — Extract "Related searches" for secondary keyword coverage.
+
+**Fallback**: If Playwright is unavailable, use `WebSearch` for PAA and competitor
+title data. Google Trends can be approximated via `WebSearch` queries.
+
+Feed SERP intelligence into:
+- Phase 3 outline (PAA → H2 headings, related searches → subtopics)
+- Phase 4 charts (Google Trends data → trend line chart)
+- Phase 5a title (competitor title patterns)
+- Phase 5l FAQ (PAA questions)
 
 ### Phase 3: Outline Generation
 
@@ -237,6 +307,9 @@ Tag each with a comment or visible marker:
   involvement, "when we tried X, Y happened" narratives
 - `[UNIQUE INSIGHT]` — Analysis others haven't made, contrarian perspectives
   backed by data, novel connections between existing research
+- `[SOCIAL DATA]` — Insights derived from social platform analysis via bycrawl.
+  Real engagement metrics, audience sentiment patterns, cross-platform trends
+  not available in traditional research
 
 Placement:
 - Weave into the body text naturally
@@ -373,6 +446,21 @@ Answer with statistic and source attribution (40-60 words).
 - Link to relevant existing content naturally
 - Use descriptive anchor text (not "click here")
 
+#### 5n. Social Proof Embedding (if bycrawl data available)
+
+When bycrawl research was run in Phase 2, embed real social evidence:
+
+- **Reddit**: `A discussion in r/{subreddit} with {upvotes} upvotes highlighted: "{quote}"`
+- **X/Twitter**: `According to @{handle}, whose post received {likes} likes: "{quote}"`
+- **YouTube/TikTok**: `In a video with {views} views, {channel} demonstrated that {finding}`
+
+Rules:
+- Attribute with platform, engagement metric, and context
+- Social proof reinforces — never replaces — tier 1-3 research sources
+- Target 2-3 social proof embeddings per article
+- Each embedding earns `[SOCIAL DATA]` information gain credit
+- See `references/social-serp-research.md` § Social Proof Embedding Patterns
+
 ### Phase 6: Quality Check
 
 Before delivering, verify:
@@ -407,6 +495,14 @@ Before delivering, verify:
 17. **Contractions** — Verify natural use of contractions ("it's", "we've", "don't", "isn't"). Formal AI prose avoids contractions; natural writing uses them.
 18. **Rhetorical questions** — Verify at least one rhetorical question every 200-300 words to break up declarative patterns.
 
+#### Social & SERP Validation (if enrichment was used)
+19. **Social content gap addressed** — Article covers at least 1 content gap identified from bycrawl data
+20. **Audience language incorporated** — At least 3 pain point phrases or desire language from social comments woven into body
+21. **Social proof present** — At least 2 `[SOCIAL DATA]` markers with real engagement metrics
+22. **PAA coverage** — If PAA was extracted, at least 2 PAA questions addressed in H2s or FAQ
+23. **Keyword still active** — Run post-write validation via bycrawl (see `references/social-serp-research.md` § Post-Write Keyword Validation). Flag if volume dropped since Phase 1.3.
+24. **Google Trends alignment** — If Trends data was scraped, verify article doesn't focus on a declining interest curve
+
 ### Phase 7: Delivery
 
 Present the completed article with a summary:
@@ -438,6 +534,20 @@ Present the completed article with a summary:
 - Word count: ~[N] words
 - Estimated reading time: [N] min
 
+### Social Intelligence (if bycrawl enrichment was used)
+- Platforms queried: [list — Reddit, X, TikTok, YouTube, Threads]
+- Content gaps identified: [N] ([brief descriptions])
+- Audience phrases incorporated: [N]
+- Social proof embeddings: [N] with [SOCIAL DATA] markers
+- FAQ items sourced from comments: [N] of [total FAQ items]
+- Keyword social volume: [strong/moderate/weak]
+
+### SERP Intelligence (if Playwright was used)
+- SERP features detected: [AI Overview, Featured Snippet, PAA, etc.]
+- PAA questions extracted: [N] (used in: [H2s / FAQ / both])
+- Google Trends direction: [rising / stable / declining]
+- Competitor titles analyzed: [N]
+
 ### Naturalness
 - Sentence length variance: [pass/fail]
 - AI phrase scan: [pass/fail]
@@ -449,4 +559,6 @@ Present the completed article with a summary:
 - Resolve [INTERNAL-LINK] placeholders with actual URLs
 - Add internal links to your existing content
 - Run `/blog analyze <file>` to verify quality score
+- If bycrawl was used: verify social quotes are still current
+- If Trends data was used: schedule re-check in 3 months for freshness update
 ```
