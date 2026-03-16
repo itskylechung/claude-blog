@@ -13,6 +13,8 @@ allowed-tools:
   - Grep
   - Glob
   - WebFetch
+  - WebSearch
+  - mcp__bycrawl__*
 ---
 
 # Blog GEO -- AI Citation Optimization Audit

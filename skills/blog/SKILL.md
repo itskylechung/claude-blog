@@ -30,6 +30,7 @@ allowed-tools:
   - WebFetch
   - WebSearch
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog -- Content Engine for Rankings & AI Citations
@@ -254,6 +255,13 @@ Users do not need to call it directly.
 ## Integration
 
 Chart generation is built-in — no external dependencies required for full functionality.
+
+**ByCrawl MCP** (optional, enhances SEO/GEO):
+- Requires `@bycrawl/mcp` configured in `.mcp.json` with a valid API key
+- Adds social demand validation, content gap analysis, comment mining, audience language extraction
+- Social signals correlate 3x more with AI visibility than backlinks
+- Used by `blog-write` (Phases 1.3, 2, 5n, 6) and `blog-geo` for citation audits
+- See `references/social-serp-research.md` for API patterns (~42-52 calls/article)
 
 **Optional companion skills** (for deeper analysis of published pages):
 - `/seo` — Full SEO audit of published blog pages

@@ -1,3 +1,11 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "bycrawl": {
+      "command": "npx",
+      "args": ["-y", "@bycrawl/mcp"],
+      "env": {
+        "BYCRAWL_API_KEY": "sk_byc_xxx"
+      }
+    }
+  }
 }

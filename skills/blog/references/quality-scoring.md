@@ -8,7 +8,7 @@ Score each blog post against this checklist. Used by `/blog analyze`.
 |-------|--------|---------------|
 | Depth/comprehensiveness | 7 | Covers topic thoroughly, no major gaps |
 | Readability (Flesch 60-70) | 7 | Flesch 60-70 ideal, 55-75 acceptable; Grade 7-8; Gunning Fog 7-8 |
-| Originality/unique value markers | 5 | Original data, case studies, first-hand experience |
+| Originality/unique value markers | 5 | Original data, case studies, first-hand experience, social platform intelligence |
 | Sentence & paragraph structure | 4 | Avg sentence 15-20 words, ≤25% over 20; paragraphs 40-80 words; H2 every 200-300 words |
 | Engagement elements | 4 | TL;DR box, callouts, varied content blocks |
 | Grammar/anti-pattern | 3 | Passive voice ≤10%, AI trigger words ≤5/1K, transition words 20-30%, clean prose |
