@@ -13,6 +13,7 @@ allowed-tools:
   - Grep
   - Glob
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog Audit -- Full-Site Health Assessment
@@ -121,6 +122,26 @@ Build and analyze the internal link graph:
 5. Identify dead-end pages: posts with zero outbound internal links
 6. For each orphan, recommend 2-3 existing posts that should link to it
    based on topic relevance
+
+### Step 4.5: Social Demand Validation (Optional — ByCrawl)
+
+> "Would you like me to validate social demand for each post's topic via bycrawl? (yes/no)"
+
+If yes, for each blog post's primary keyword, run a quick demand check (~2-3 API calls per post):
+1. Search Reddit and X for the keyword
+2. Classify demand: **Strong** / **Moderate** / **Weak**
+3. Flag posts targeting keywords with weak social demand for priority review
+
+Add a `Social Demand` column to the Per-Post Table:
+```
+| Post | Score | Social Demand | Content | SEO | ... |
+|------|-------|---------------|---------|-----|-----|
+| [file] | XX/100 | Strong | X/30 | X/25 | ... |
+| [file] | XX/100 | Weak | X/30 | X/25 | ... |
+```
+
+Posts with high quality scores but weak social demand may need topic pivots.
+Posts with weak scores but strong social demand are high-priority rewrites.
 
 ### Step 5: Stale Content Detection
 

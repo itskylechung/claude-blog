@@ -16,6 +16,7 @@ allowed-tools:
   - Glob
   - WebSearch
   - WebFetch
+  - mcp__bycrawl__*
 ---
 
 # Blog Outline Generator -- SERP-Informed Structure Planning
@@ -35,6 +36,21 @@ Gather from the user:
 3. **Search intent** — Informational, commercial, or transactional
 
 If only a topic is given, infer the keyword and intent from context.
+
+### Step 1.5: Social Signal Check (Optional — ByCrawl)
+
+> "Would you like me to enrich this outline with live social data from bycrawl? (yes/no)"
+
+If yes, run a quick cross-platform scan (~8-12 API calls):
+1. Search Reddit, X, TikTok, YouTube, Threads for the keyword
+2. Extract:
+   - **Question-format headings** from social discussions → H2 candidates
+   - **Content gaps** — topics asked about but poorly covered
+   - **Audience language** — hooks and pain points for section openers
+   - **Demand signal** — strong/moderate/weak across platforms
+3. Feed findings into Step 3 (outline generation) and Step 4 (content gaps)
+
+If no, skip to Step 2.
 
 ### Step 2: SERP Analysis
 
@@ -107,6 +123,12 @@ Create a structured outline with the following format:
 ## Internal Linking Zones
 - **Link TO from this post**: [Existing content that should be referenced]
 - **Link FROM to this post**: [Existing content that should link here]
+
+## Social Intelligence (if bycrawl was used)
+- **Demand signal**: [strong/moderate/weak]
+- **H2 candidates from social**: [questions people are actually asking]
+- **Audience pain points**: [from comments and transcripts]
+- **Content gaps from social**: [underserved topics across platforms]
 
 ## Content Gaps to Exploit
 1. [What competitors miss that this post should cover]

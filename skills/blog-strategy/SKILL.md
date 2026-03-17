@@ -18,6 +18,7 @@ allowed-tools:
   - WebFetch
   - WebSearch
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog Strategy -- Positioning & Content Architecture
@@ -40,6 +41,30 @@ Gather context through questions or project analysis:
 5. **Differentiator**: What unique expertise or data do you have?
 6. **Resources**: Writing capacity (posts/week), budget for visuals?
 
+### Step 1.5: Social Landscape Analysis (Optional — ByCrawl)
+
+> "Would you like me to enrich strategy with live social intelligence from bycrawl? (yes/no)"
+
+If yes, run cross-platform competitive and audience research (~20-30 API calls):
+
+1. **Competitor social audit** — For each competitor, search X, YouTube, Reddit,
+   LinkedIn for their brand + topic keywords. Assess:
+   - Social publishing frequency and platforms used
+   - Audience sentiment (positive/negative/mixed)
+   - Messaging gaps and positioning blind spots
+   - Content formats that get the most engagement
+2. **Audience demand mapping** — Search Reddit, X, TikTok, YouTube, Threads for
+   niche keywords to identify:
+   - High-demand topics with strong social volume
+   - Underserved topics (questions asked but poorly answered)
+   - Emerging trends in "Latest" but not "Top"
+3. **Audience language mining** — Pull transcripts and emotional-trigger posts to
+   extract hooks, pain points, and desire language for content planning
+4. **Social proof opportunities** — Identify high-engagement discussions that can
+   be referenced as `[SOCIAL DATA]` markers in future posts
+
+Feed all findings into Steps 2-6 below.
+
 ### Step 2: Competitive Landscape
 
 Research competitors' blogs:
@@ -51,6 +76,7 @@ Research competitors' blogs:
    - Schema usage
    - Social distribution (YouTube, Reddit, LinkedIn)
    - AI citation presence (search ChatGPT/Perplexity for industry terms)
+   - **Social positioning** (if bycrawl was used: messaging, audience sentiment, gaps)
 3. Identify gaps no competitor covers well
 
 #### Competitive AI Citation Analysis
@@ -349,11 +375,20 @@ Output format:
 ## Measurement
 [KPIs and tracking approach — traditional SEO + AI citation metrics]
 
+## Social Intelligence (if bycrawl enrichment was used)
+- **Platforms analyzed**: [Reddit, X, TikTok, YouTube, Threads, LinkedIn]
+- **Competitor social gaps**: [key gaps identified]
+- **High-demand topics**: [topics with strong social volume]
+- **Audience pain points**: [top themes from comments/transcripts]
+- **Audience language bank**: [hooks and phrases to use across content]
+- **Social proof pipeline**: [high-engagement discussions to reference]
+
 ## Reference Documents
 - `references/internal-linking.md` — Hub-and-spoke model, anchor text rules
 - `references/distribution-playbook.md` — Channel tactics and templates
 - `references/geo-optimization.md` — GEO platform-specific optimization
 - `references/content-templates.md` — 12 content templates with structures
+- `references/social-serp-research.md` — ByCrawl API patterns for social intelligence
 
 ## Next Steps
 1. Run `/blog calendar` to create the first month's editorial calendar

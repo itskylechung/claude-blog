@@ -260,12 +260,21 @@ Users do not need to call it directly.
 
 Chart generation is built-in — no external dependencies required for full functionality.
 
-**ByCrawl MCP** (optional, enhances SEO/GEO):
+**ByCrawl MCP** (optional, enhances all sub-skills):
 - Requires `@bycrawl/mcp` configured in `.mcp.json` with a valid API key
-- Adds social demand validation, content gap analysis, comment mining, audience language extraction
 - Social signals correlate 3x more with AI visibility than backlinks
-- Used by `blog-write` (Phases 1.3, 2, 5n, 6) and `blog-geo` for citation audits
-- See `references/social-serp-research.md` for API patterns (~42-52 calls/article)
+- Integrated across the full content lifecycle:
+  - `blog-write` — topic validation, content gaps, comment mining, audience language, social proof, post-write validation (~42-52 calls/article)
+  - `blog-rewrite` — content gap analysis, audience language, social proof embedding (~15-20 calls)
+  - `blog-brief` — social demand validation, audience pain points, FAQ sourcing (~20-23 calls)
+  - `blog-outline` — question-format H2 candidates, content gaps from social (~8-12 calls)
+  - `blog-strategy` — competitor social audit, audience demand mapping, language mining (~20-30 calls)
+  - `blog-calendar` — trending topic detection, social volume for scheduling (~10-15 calls)
+  - `blog-analyze` — social visibility check, brand presence assessment (~4-6 calls)
+  - `blog-audit` — per-post social demand validation (~2-3 calls per post)
+  - `blog-repurpose` — platform-specific intelligence for each output (~8-12 calls)
+  - `blog-geo` — social brand signals for citation audits
+- See `references/social-serp-research.md` for API patterns
 
 **Optional companion skills** (for deeper analysis of published pages):
 - `/seo` — Full SEO audit of published blog pages

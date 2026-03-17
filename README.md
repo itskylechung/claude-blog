@@ -6,10 +6,11 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 ![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Sub-Skills](https://img.shields.io/badge/Sub--Skills-13-orange)
+![ByCrawl MCP](https://img.shields.io/badge/ByCrawl-MCP_Powered-ff6b35)
 
-**The most comprehensive blog creation skill for Claude Code.**
+**The most comprehensive blog creation skill for Claude Code — powered by [ByCrawl](https://bycrawl.com) social intelligence.**
 
-Strategy, briefs, calendars, writing, optimization, schema, repurposing, and full-site audits — all from slash commands. Dual-optimized for Google rankings and AI citation platforms (ChatGPT, Perplexity, AI Overviews).
+Strategy, briefs, calendars, writing, optimization, schema, repurposing, and full-site audits — all from slash commands. Dual-optimized for Google rankings and AI citation platforms (ChatGPT, Perplexity, AI Overviews). ByCrawl MCP enriches every phase with live social signals from Reddit, X, TikTok, YouTube, Threads, LinkedIn, and Instagram.
 
 ### [Watch the Demo](https://www.youtube.com/watch?v=AeLC4iutG8w)
 
@@ -17,6 +18,16 @@ Strategy, briefs, calendars, writing, optimization, schema, repurposing, and ful
 ---
 
 ## Quick Start
+
+### Install from Claude Code Plugin Marketplace (Recommended)
+
+```bash
+/plugin marketplace add claude-blog
+```
+
+That's it. Claude Code automatically downloads the skill, registers all 13 sub-skills, and makes `/blog` commands available immediately.
+
+### Install via shell script
 
 **One-command install (Unix/macOS):**
 
@@ -59,6 +70,72 @@ Restart Claude Code after installation to activate.
 > **13 sub-skills total**: 12 user-facing commands above + `blog-chart` (internal SVG generation, invoked automatically by other commands).
 
 ## Features
+
+### ByCrawl Social Intelligence Integration
+
+[ByCrawl MCP](https://bycrawl.com) enriches blog production with live cross-platform social data (~42-52 API calls per article). Social signals correlate **3x more with AI visibility than backlinks**.
+
+#### Why ByCrawl + claude-blog?
+
+Without ByCrawl, the blog skill relies on `WebSearch` — you get Google results but miss the demand signals, audience language, content gaps, and social proof that live on social platforms. ByCrawl turns the skill from a search-optimized writer into a **social-intelligence-powered content engine**.
+
+| Without ByCrawl | With ByCrawl |
+|----------------|-------------|
+| Topics chosen by gut instinct or keyword tools | Topics validated by real cross-platform demand (Reddit, X, TikTok, YouTube, Threads) |
+| Generic AI-sounding copy | Copy infused with real audience language — hooks, pain points, and phrasing mined from transcripts and comments |
+| FAQ sections based on guesses | FAQ items sourced from actual YouTube/TikTok comments people are asking right now |
+| No competitive social context | Competitor messaging gaps identified — what they say, how audiences react, what they miss |
+| Publish and hope | Post-write freshness check confirms the keyword still has active social volume |
+| Standard sourced statistics | Social proof with real engagement metrics: `"A Reddit thread with 4.2K upvotes revealed..."` |
+| Content that ranks | Content that ranks **and** gets cited by AI systems — social signals are the #1 predictor of AI visibility |
+
+#### ByCrawl Across All Skills
+
+ByCrawl is integrated into **11 of 13 sub-skills** — the entire content lifecycle, not just writing:
+
+| Skill | What ByCrawl Adds | API Calls |
+|-------|-------------------|-----------|
+| `/blog write` | Topic validation, content gaps, comment mining, audience language, social proof, post-write validation | ~42-52 |
+| `/blog rewrite` | Content gap analysis, audience language for rewrites, social proof embedding | ~15-20 |
+| `/blog brief` | Social demand validation, audience pain points, FAQ sourcing from comments | ~20-23 |
+| `/blog outline` | Question-format H2 candidates from social, content gaps | ~8-12 |
+| `/blog strategy` | Competitor social audit, audience demand mapping, language mining | ~20-30 |
+| `/blog calendar` | Trending topic detection, social volume for scheduling priority | ~10-15 |
+| `/blog analyze` | Social visibility check, brand presence assessment | ~4-6 |
+| `/blog audit` | Per-post social demand validation (Strong/Moderate/Weak) | ~2-3/post |
+| `/blog repurpose` | Platform-specific intelligence (Reddit, X, YouTube, LinkedIn) | ~8-12 |
+| `/blog geo` | Social brand signals for AI citation audits | ~4-6 |
+
+Skills without ByCrawl (structural — no social data needed): `blog-chart`, `blog-schema`, `blog-seo-check`, `blog-humanize`
+
+#### How ByCrawl Enriches Each Phase
+
+| Phase | What ByCrawl Adds | API Calls |
+|-------|-------------------|-----------|
+| **Topic Validation** | Cross-platform demand check across Reddit, X, TikTok, YouTube, Threads — catches low-demand topics before you write | ~8 |
+| **Content Gap Analysis** | Finds what's saturated vs. underserved across platforms, mines competitor blind spots | ~8 |
+| **Comment Mining** | Extracts real audience questions from YouTube/TikTok comments → FAQ items and H2 topics | ~6-10 |
+| **Audience Language** | Pulls hooks, pain points, and desire language from transcripts and emotional-trigger posts | ~10 |
+| **Competitor Social Audit** | Checks competitor messaging, audience sentiment, and positioning gaps | ~6-9 |
+| **Post-Write Validation** | Confirms keyword still has active social volume before you publish | ~4 |
+
+**Platforms covered**: Reddit, X/Twitter, TikTok, YouTube, Threads, LinkedIn, Instagram, Facebook, Dcard
+
+**How it works in `/blog write`**:
+```
+Phase 1.3 → Social demand validation (strong/moderate/weak signal)
+Phase 2   → Content gap analysis + comment mining + competitor audit
+Phase 5   → Audience language mining → natural copy that resonates
+Phase 5n  → Social proof embedding with real engagement metrics
+Phase 6   → Post-write keyword freshness check
+```
+
+Social proof gets embedded inline with attribution:
+- `"A discussion in r/{subreddit} with {upvotes} upvotes highlighted..."`
+- `"In a video with {views} views, {channel} demonstrated..."`
+- Each earns a `[SOCIAL DATA]` information gain marker
+
+ByCrawl is optional — every skill gracefully falls back to `WebSearch`-only research if no API key is configured.
 
 ### 12 Content Templates
 Auto-selected based on topic and intent: how-to guide, listicle, case study, comparison, pillar page, product review, thought leadership, roundup, tutorial, news analysis, data research, FAQ knowledge base.
@@ -145,6 +222,13 @@ claude-blog/
 
 ## Uninstall
 
+**If installed via marketplace:**
+```bash
+/plugin marketplace remove claude-blog
+```
+
+**If installed via shell script:**
+
 Unix/macOS:
 ```bash
 chmod +x uninstall.sh && ./uninstall.sh
@@ -155,9 +239,45 @@ Windows (PowerShell):
 .\uninstall.ps1
 ```
 
+## ByCrawl MCP Setup
+
+Add ByCrawl to your project's `.mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "bycrawl": {
+      "command": "npx",
+      "args": ["-y", "@bycrawl/mcp"],
+      "env": {
+        "BYCRAWL_API_KEY": "your-api-key"
+      }
+    }
+  }
+}
+```
+
+Or add globally to `~/.claude/settings.json` to use across all projects.
+
+Get your API key at [bycrawl.com](https://bycrawl.com).
+
+### ByCrawl Tools Used by claude-blog
+
+| Tool | Used In | Purpose |
+|------|---------|---------|
+| `reddit_search_posts` | Topic validation, gap analysis | Demand signals, content gaps, audience questions |
+| `x_search_posts` | Topic validation, language mining | Trending angles, emotional triggers, competitor mentions |
+| `tiktok_search_videos` | Topic validation, gap analysis | Visual content trends, emerging topics |
+| `youtube_search_videos` | Gap analysis, competitor audit | Top-performing content, competitor positioning |
+| `youtube_get_video_transcription` | Language mining | Audience vocabulary, proven hooks |
+| `youtube_get_video_comments` | Comment mining | Real audience questions → FAQ items |
+| `tiktok_get_video_comments` | Comment mining | Pain points → H2 topic candidates |
+| `tiktok_get_video_subtitles` | Language mining | Platform tone, natural phrasing |
+| `threads_search_posts` | Topic validation | Cross-platform volume confirmation |
+
 ## Integration
 
-Chart generation is built-in — no external dependencies required for full functionality.
+Chart generation is built-in — no external dependencies required for core functionality.
 
 **Optional companion skills** (for deeper analysis of published pages):
 
@@ -165,7 +285,7 @@ Chart generation is built-in — no external dependencies required for full func
 |-------|-------------|
 | `/seo` | Deep SEO analysis of published blog pages |
 | `/seo-schema` | Schema markup validation and generation |
-| `/seo-geo` | AI citation optimization audit |
+| `/seo-geo` | AI citation optimization audit (also uses ByCrawl for social brand signals) |
 
 ## Documentation
 
@@ -188,4 +308,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
-Built by [AgriciDaniel](https://github.com/AgriciDaniel) with Claude Code.
+Built by [AgriciDaniel](https://github.com/AgriciDaniel) with Claude Code. Social intelligence powered by [ByCrawl](https://bycrawl.com).

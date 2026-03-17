@@ -11,6 +11,7 @@ allowed-tools:
   - Write
   - Grep
   - Glob
+  - mcp__bycrawl__*
 ---
 
 # Blog Repurpose -- Cross-Platform Content Adaptation
@@ -33,6 +34,29 @@ Read the blog post and extract the core content elements:
 - **TL;DR** — A 2-3 sentence summary that delivers standalone value
 - **Target audience** — Who the blog was written for
 - **Topic category** — For subreddit and hashtag selection
+
+### Step 1.5: Platform Intelligence (Optional — ByCrawl)
+
+> "Would you like me to analyze platform trends for better repurposing? (yes/no)"
+
+If yes, run platform-specific research (~8-12 API calls):
+1. **Reddit** — Search target subreddits for the topic to find:
+   - Which angle gets the most upvotes (data-driven? question? contrarian?)
+   - Top-voted comments revealing what the audience values most
+   - Posting conventions (text post vs link, flair requirements)
+2. **X/Twitter** — Search for viral posts on the topic to identify:
+   - Hook patterns that drive engagement (stat-led? question? bold claim?)
+   - Hashtag usage and trending terms
+   - Thread vs single tweet performance
+3. **YouTube** — Search for top videos on the topic to extract:
+   - Title patterns (number-based? question? how-to?)
+   - Transcript hooks from the first 30 seconds
+   - Comment themes for engagement prompts
+4. **LinkedIn** — Search for topic discussions to assess:
+   - Professional angle vs personal story preference
+   - Engagement triggers (polls? contrarian takes? data?)
+
+Feed platform-specific insights into each output below.
 
 ### Step 2: Ask User
 

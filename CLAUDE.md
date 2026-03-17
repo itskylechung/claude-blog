@@ -4,7 +4,7 @@
 
 This repository contains **Claude Blog**, a Tier 4 Claude Code skill for blog content
 creation, optimization, and management. It follows the Agent Skills open standard and the
-3-layer architecture (directive, orchestration, execution). 14 sub-skills, 4 specialized
+3-layer architecture (directive, orchestration, execution). 15 sub-skills, 4 specialized
 subagents, and 12 content templates are dual-optimized for Google rankings (December 2025
 Core Update, E-E-A-T) and AI citations (GEO/AEO).
 
@@ -33,6 +33,7 @@ claude-blog/
     blog-chart/SKILL.md           # Inline SVG data visualizations
     blog-repurpose/SKILL.md       # Multi-platform repurposing
     blog-geo/SKILL.md             # AI citation optimization
+    blog-humanize/SKILL.md        # Remove AI writing patterns
     blog-audit/SKILL.md           # Full-site blog health assessment
   agents/                            # 4 specialized subagents
     blog-researcher.md              # Statistics and source research
@@ -58,6 +59,7 @@ claude-blog/
 | `/blog chart` | Inline SVG data visualization charts |
 | `/blog repurpose` | Multi-platform content repurposing |
 | `/blog geo` | AI citation optimization audit |
+| `/blog humanize` | Remove AI writing patterns, add natural voice |
 | `/blog audit` | Full-site blog health assessment |
 
 ## Development Rules

@@ -17,6 +17,7 @@ allowed-tools:
   - Grep
   - Glob
   - WebFetch
+  - mcp__bycrawl__*
 ---
 
 # Blog Analyzer -- Quality Audit & Scoring
@@ -144,6 +145,29 @@ Analyze the post for AI-generated content risk:
 - Flag if AI probability > 50% based on combined signals
 - Provide specific passages that triggered the flag
 - Recommend humanization: personal anecdotes, varied sentence rhythm, domain jargon
+
+### Step 3.5: Social Visibility Check (Optional — ByCrawl)
+
+> "Would you like me to check social visibility for this post's topic via bycrawl? (yes/no)"
+
+If yes, run a quick cross-platform check (~4-6 API calls):
+1. Search Reddit, X, YouTube for the post's primary keyword
+2. Assess:
+   - **Social demand**: Strong / Moderate / Weak based on result volume
+   - **Brand presence**: Is the post or site mentioned in social discussions?
+   - **Competitor visibility**: Do competitors dominate social for this keyword?
+3. Add a `Social Visibility` section to the report:
+
+```
+### Social Visibility (ByCrawl)
+- **Topic demand**: [Strong/Moderate/Weak] across [N] platforms
+- **Brand mentions**: [Found/Not found] in social discussions
+- **Competitor presence**: [competitors seen in results]
+- **Recommendation**: [e.g., "Strong demand but no brand presence — distribute via Reddit and X"]
+```
+
+Social signals correlate 3x more with AI visibility than backlinks. A high-scoring
+post with weak social presence is leaving AI citations on the table.
 
 ### Step 4: Determine Rating
 

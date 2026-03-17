@@ -19,6 +19,7 @@ allowed-tools:
   - WebFetch
   - WebSearch
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog Rewriter -- Optimize Existing Posts
@@ -32,6 +33,7 @@ and AI citation platforms. Preserves the author's voice while applying the
 - `references/eeat-signals.md` — Experience, expertise, authority, trust markers
 - `references/internal-linking.md` — Linking strategy and anchor text rules
 - `references/visual-media.md` — Image sourcing and chart styling
+- `references/social-serp-research.md` — ByCrawl API patterns for social intelligence
 
 ## Workflow
 
@@ -95,6 +97,23 @@ Wait for user approval before proceeding.
 4. **Plan charts** if post has fewer than 2:
    - Identify data suitable for visualization
    - Select diverse chart types
+
+#### ByCrawl Social Enrichment (Optional)
+
+> "Would you like me to enrich this rewrite with live social data from bycrawl? (~15-20 API calls)"
+
+If yes, run these enrichments (see `references/social-serp-research.md`):
+
+5. **Content gap analysis** — Search top-performing content on Reddit, X,
+   TikTok, YouTube to find what's missing from the current post
+6. **Comment mining** — Pull YouTube/TikTok comments to extract real audience
+   questions → add to FAQ section and fill content gaps
+7. **Audience language** — Mine hooks, pain points, and desire language from
+   transcripts and emotional-trigger posts → weave into rewritten sections
+8. **Keyword freshness check** — Confirm the topic still has active social
+   volume before investing in a full rewrite
+
+Record findings in a social intelligence section of research notes.
 
 ### Phase 3: Chart Generation (Built-In)
 
@@ -254,6 +273,20 @@ After rewriting, verify all quality gates pass:
 17. AI content estimate reduced from audit baseline
 18. Score improved across all 5 categories vs Phase 1 audit
 
+#### 4n. Social Proof Embedding (if bycrawl data available)
+
+When bycrawl research was run in Phase 2, embed real social evidence:
+
+- **Reddit**: `A discussion in r/{subreddit} with {upvotes} upvotes highlighted: "{quote}"`
+- **X/Twitter**: `According to @{handle}, whose post received {likes} likes: "{quote}"`
+- **YouTube/TikTok**: `In a video with {views} views, {channel} demonstrated that {finding}`
+
+Rules:
+- Attribute with platform, engagement metric, and context
+- Social proof reinforces — never replaces — tier 1-3 research sources
+- Target 2-3 social proof embeddings per rewrite
+- Each embedding earns `[SOCIAL DATA]` information gain credit
+
 ### Phase 6: Summary
 
 ```
@@ -298,6 +331,13 @@ After rewriting, verify all quality gates pass:
 ### Visual Elements
 - Charts: [count] ([types])
 - Images: [count]
+
+### Social Intelligence (if bycrawl enrichment was used)
+- Content gaps addressed: [N]
+- Audience language incorporated: [N] phrases
+- Social proof embeddings: [N] with [SOCIAL DATA] markers
+- FAQ items sourced from comments: [N]
+- Keyword social volume: [strong/moderate/weak]
 
 ### Ready for
 - `/blog analyze <file>` to verify final score

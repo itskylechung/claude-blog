@@ -18,6 +18,7 @@ allowed-tools:
   - WebFetch
   - WebSearch
   - Task
+  - mcp__bycrawl__*
 ---
 
 # Blog Brief Generator -- Content Planning
@@ -29,6 +30,7 @@ Reference documents:
 - `references/content-templates.md` -- template selection criteria
 - `references/distribution-playbook.md` -- channel-specific distribution tactics
 - `references/internal-linking.md` -- link architecture patterns
+- `references/social-serp-research.md` -- ByCrawl API patterns for social intelligence
 
 ## Workflow
 
@@ -41,6 +43,25 @@ Gather from the user:
 4. **Business context** -- What does the company do? What's the CTA?
 
 If only a topic is given, infer the rest from context.
+
+### Step 1.5: Social Demand Validation (Optional — ByCrawl)
+
+> "Would you like me to validate this topic with live social signals from bycrawl? (yes/no)"
+
+If yes, run cross-platform demand check (~8 API calls):
+1. Search Reddit, X, TikTok, YouTube, Threads for the target keyword
+2. Classify demand:
+   - **Strong** (50+ results across 3+ platforms): High-confidence topic
+   - **Moderate** (20-50 results): Viable but niche
+   - **Weak** (<20 results total): Warn user — consider pivoting
+3. Extract early intelligence for the brief:
+   - Long-tail keyword variations from social titles
+   - Question-format keywords from comments (high intent)
+   - Audience pain points and desire language
+   - Emerging terms in "Latest" but not "Top" (newly trending)
+4. Feed social signals into template selection (Step 2.5) and outline (Step 5)
+
+If no, skip to Step 2.
 
 ### Step 2: Keyword Research
 
@@ -90,6 +111,21 @@ Analyze the top 3-5 ranking pages for the target keyword:
 5. **Freshness** -- How recently were they updated?
 6. **Schema** -- Do they use FAQ or other rich results? (Note: HowTo deprecated Sept 2023)
 7. **Template pattern** -- What content format do top results use?
+
+### Step 3.5: Social Content Gap Analysis (Optional — ByCrawl)
+
+If bycrawl was used in Step 1.5, enrich competitive analysis with social data (~12-15 API calls):
+
+1. **Content gap analysis** — Search top-performing content on Reddit, X, TikTok,
+   YouTube to find what's saturated vs. underserved
+2. **Comment mining** — Pull comments from top 3 YouTube/TikTok videos to extract
+   real audience questions → feed into FAQ planning and H2 topics
+3. **Competitor social audit** — Check competitor messaging, audience reactions,
+   and positioning gaps across social platforms
+4. **Audience language extraction** — Mine hooks, pain points, and desire language
+   from transcripts and emotional-trigger posts
+
+Add findings to the brief under a `## Social Intelligence` section.
 
 ### Step 4: Statistics Research
 
@@ -219,6 +255,15 @@ claim that can stand alone when quoted.
 | 2 | [Donut chart] | [Data description] | H2: Section 4 |
 | 3 | [Image: Pixabay] | [Search terms] | H2: Section 1 |
 | 4 | [Image: Pixabay] | [Search terms] | H2: Section 3 |
+
+## Social Intelligence (if bycrawl enrichment was used)
+- **Demand signal**: [strong/moderate/weak] across [N] platforms
+- **Content gaps from social**: [topics asked about but not well-covered]
+- **Audience pain points**: [top 3-5 pain points from comments/transcripts]
+- **Audience language**: [hooks, phrases, and emotional triggers to use]
+- **Competitor social gaps**: [what competitors miss on social platforms]
+- **FAQ items from comments**: [real questions people are asking]
+- **Emerging keywords**: [terms trending in Latest but not Top]
 
 ## Competitive Gaps to Exploit
 1. [What competitors miss that we should cover]

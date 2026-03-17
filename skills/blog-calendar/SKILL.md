@@ -16,6 +16,7 @@ allowed-tools:
   - Glob
   - WebFetch
   - WebSearch
+  - mcp__bycrawl__*
 ---
 
 # Blog Calendar -- Editorial Planning
@@ -95,6 +96,29 @@ Plan update cycles:
 - **Medium-priority posts**: Update every 90 days
 - **Low-priority posts**: Update annually
 - **Evergreen posts**: Update when data changes
+
+### Step 3.5: Social Trend Detection (Optional — ByCrawl)
+
+> "Would you like me to identify trending topics from social platforms via bycrawl? (yes/no)"
+
+If yes, run cross-platform trend scan (~10-15 API calls):
+1. Search Reddit, X, TikTok, YouTube, Threads for niche keywords
+2. Compare "Latest" vs "Top" results to find **emerging trends**
+   - Present in Latest but absent from Top = newly trending
+3. Extract **high-demand topics** with strong engagement metrics
+4. Identify **seasonal spikes** from social volume patterns
+5. Mine audience questions from comments for content ideas
+
+Output a social trends report:
+```
+## Social Trend Signals
+| Topic | Platforms Active | Engagement Level | Trend Direction | Calendar Priority |
+|-------|-----------------|-----------------|-----------------|-------------------|
+| [topic] | Reddit, X, YouTube | High (500+ engagements) | Rising | Schedule Week 1 |
+| [topic] | TikTok, Threads | Moderate | Stable | Schedule Week 3 |
+```
+
+Feed trending topics into the calendar as high-priority new content slots.
 
 ### Step 4: Seasonal & Trending Hooks
 
