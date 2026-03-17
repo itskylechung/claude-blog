@@ -12,14 +12,15 @@ description: >
   "blog strategy", "content brief", "editorial calendar", "analyze blog",
   "rewrite blog", "update blog", "blog SEO", "blog optimization", "content plan",
   "blog outline", "seo check", "schema markup", "repurpose", "geo audit",
-  "blog audit", "citation readiness".
+  "blog audit", "citation readiness", "humanize", "de-AI", "make it sound human",
+  "remove AI patterns", "natural writing", "sounds like AI".
 license: MIT
 compatibility: Requires Claude Code and Python 3.11+ for quality scoring
 metadata:
   author: AgriciDaniel
   version: "1.3.1"
 user-invokable: true
-argument-hint: "[write|rewrite|analyze|brief|calendar|strategy|outline|seo-check|schema|repurpose|geo|audit] [topic-or-file]"
+argument-hint: "[write|rewrite|analyze|brief|calendar|strategy|outline|seo-check|schema|repurpose|geo|humanize|audit] [topic-or-file]"
 allowed-tools:
   - Read
   - Write
@@ -56,6 +57,7 @@ Perplexity, Google AI Overviews, Gemini).
 | `/blog repurpose <file>` | Repurpose content for other platforms |
 | `/blog geo <file>` | AI citation readiness audit |
 | `/blog audit [directory]` | Full-site blog health assessment |
+| `/blog humanize <file>` | Remove AI writing patterns, add natural voice |
 | `/blog update <file>` | Update existing post with fresh stats (routes to rewrite) |
 
 ## Orchestration Logic
@@ -77,6 +79,7 @@ Perplexity, Google AI Overviews, Gemini).
    - `repurpose` → `blog-repurpose` (cross-platform content)
    - `geo` / `aeo` / `citation` → `blog-geo` (AI citation audit)
    - `audit` / `health` → `blog-audit` (site-wide assessment)
+   - `humanize` / `de-ai` / `natural` → `blog-humanize` (remove AI patterns)
    - `update` → `blog-rewrite` (with freshness-update mode)
 
 ### Platform Detection
@@ -200,6 +203,7 @@ Templates are in `templates/` and contain section structure, markers, and checkl
 | `blog-repurpose` | Cross-platform repurposing (social, email, YouTube, Reddit) |
 | `blog-geo` | AI citation readiness audit with 0-100 GEO score |
 | `blog-audit` | Full-site blog health assessment with parallel subagents |
+| `blog-humanize` | Remove AI writing patterns, add natural voice and personality |
 | `blog-chart` | Generate inline SVG data visualization charts with dark-mode styling |
 
 ## Agents

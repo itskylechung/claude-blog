@@ -21,6 +21,7 @@
     {"name": "blog-repurpose", "path": "skills/blog-repurpose"},
     {"name": "blog-geo",       "path": "skills/blog-geo"},
     {"name": "blog-audit",     "path": "skills/blog-audit"},
+    {"name": "blog-humanize", "path": "skills/blog-humanize"},
     {"name": "blog-chart",     "path": "skills/blog-chart", "user-invocable": false}
   ]
 }
